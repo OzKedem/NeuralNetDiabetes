@@ -33,7 +33,6 @@ def main ():
     Loading the Data as a 2D array
     '''
     dataset = loadtxt('pima-indians-diabetes.csv', delimiter=',')
-    dataset
 
     # split into input (X) and output (y) variables
     X = dataset[:, 0:8]
@@ -50,6 +49,7 @@ def main ():
     '''
     Defining the keras module
     '''
+    global model
     model = Sequential()
     model.add(Dense(12, input_dim=8, activation='LeakyReLU'))
     model.add(Dense(8, activation='ReLU'))
@@ -59,7 +59,7 @@ def main ():
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # fit the keras model on the dataset
-    history = model.fit(X_train, y_train, validation_split=0.33, epochs=150, batch_size=10)
+    history = model.fit(X_train, y_train, validation_split=0.33, epochs=15, batch_size=10)
 
     # evaluate the keras model
     _, accuracy = model.evaluate(X_train, y_train)
@@ -102,7 +102,27 @@ def main ():
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
 
-    print (predictions)
+    #print (predictions)
+    #print (X_test)
+    #print (model.predict(X_test))
 
 
 main()
+
+def retPrediction(inputArray):
+    asNumpyArray = np.asarray(inputArray)    # changing the inputData to a numpy array
+    print (asNumpyArray)
+    reshapedArray = asNumpyArray.reshape(1, -1)    # reshape the array as we are predicting for one instance
+    print (reshapedArray)
+    normalArray = scale(reshapedArray)    # standardize the input data
+    print(normalArray)
+
+    prediction = model.predict(reshapedArray) #Making the actual prediction
+    print(prediction)
+
+    if (prediction[0][0] > prediction[0][1]):
+        print("This Person Is Diabetic")
+        return True
+    else:
+        print("This Person Isn't Diabetic")
+        return False
