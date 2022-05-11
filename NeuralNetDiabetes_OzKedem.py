@@ -59,7 +59,7 @@ def main ():
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # fit the keras model on the dataset
-    history = model.fit(X_train, y_train, validation_split=0.33, epochs=15, batch_size=10)
+    history = model.fit(X_train, y_train, validation_split=0.33, epochs=150, batch_size=10)
 
     # evaluate the keras model
     _, accuracy = model.evaluate(X_train, y_train)
@@ -128,7 +128,7 @@ def retPrediction(inputArray):
     prediction = model.predict(toMetrice) #Making the actual prediction
     print(prediction)
 
-    if (prediction[0][0] > prediction[0][1]):
+    if (prediction[0][0] < prediction[0][1]):
         print("This Person Is Diabetic")
         return True
     else:

@@ -60,5 +60,11 @@ def GUI():
             Prediction.pack()
             return
 
+'''
+Examples:
+5 166 72 19 175	25.8 0.587 51 ~ A Not So Healthy Women OverAll (1)
+0 89 66 23 94 28.1 0.167 15 ~ A Healthy Man OverAll (0)
+
+'''
 GUI()
 mainloop()
