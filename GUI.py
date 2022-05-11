@@ -52,11 +52,11 @@ def GUI():
 
         #Printing Wether he is Diabetic Or Not
         if (Answer):
-            Prediction = Label(mainWindows, text="Prediction - Is Diabetic")
+            Prediction = Label(mainWindows, text="Prediction - Is Probably Diabetic")
             Prediction.pack()
             return
         else:
-            Prediction = Label(mainWindows, text="Prediction - Is Not Diabetic")
+            Prediction = Label(mainWindows, text="Prediction - Isn't Probably Diabetic")
             Prediction.pack()
             return
 
