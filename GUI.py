@@ -54,10 +54,11 @@ def GUI():
         if (Answer):
             Prediction = Label(mainWindows, text="Prediction - Is Diabetic")
             Prediction.pack()
+            return
         else:
             Prediction = Label(mainWindows, text="Prediction - Is Not Diabetic")
             Prediction.pack()
-
+            return
 
 GUI()
 mainloop()

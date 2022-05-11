@@ -110,14 +110,22 @@ def main ():
 main()
 
 def retPrediction(inputArray):
-    asNumpyArray = np.asarray(inputArray)    # changing the inputData to a numpy array
-    print (asNumpyArray)
-    reshapedArray = asNumpyArray.reshape(1, -1)    # reshape the array as we are predicting for one instance
-    print (reshapedArray)
-    normalArray = scale(reshapedArray)    # standardize the input data
-    print(normalArray)
+    #asNumpyArray = np.asarray(inputArray)    # changing the inputData to a numpy array
+    #print (asNumpyArray)
+    #toMetrice = asNumpyArray.reshape(1, -1)    # reshape the array as we are predicting for one instance
+    #print (toMetrice)
+    #normalArray = scale(toMetrice)    # standardize the input data
+    #print(normalArray)
 
-    prediction = model.predict(reshapedArray) #Making the actual prediction
+
+    asNumpyArray = np.asarray(inputArray)
+    print (asNumpyArray)
+    normalArray = scale(asNumpyArray)  # standardize the input data
+    print(normalArray)
+    toMetrice = normalArray.reshape(1, -1)  # reshape the array as we are predicting for one instance
+    print(toMetrice)
+
+    prediction = model.predict(toMetrice) #Making the actual prediction
     print(prediction)
 
     if (prediction[0][0] > prediction[0][1]):
